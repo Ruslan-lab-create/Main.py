@@ -613,8 +613,9 @@ async def cmd_use_template(message: Message, bot: Bot):
     await message.answer("Шаблон отправлен.")
 
 
-@admin_router.message(F.text.regexp(r"^/") == False)
+@admin_router.message(F.text, ~F.text.startswith("/"))
 async def relay_to_user(message: Message):
+
     admin_id = message.from_user.id
     if admin_id not in open_chats:
         return
