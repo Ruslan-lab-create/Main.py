@@ -695,7 +695,8 @@ async def handle_user_message(message: Message, bot: Bot):
 
 async def main():
     await init_db()
-    bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    bot = Bot(token=BOT_TOKEN)
+
     dp = Dispatcher()
 
     dp.include_router(admin_router)
